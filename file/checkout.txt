@@ -1,0 +1,43 @@
+/* Remove Woocommerce User Fields */
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
+add_filter( 'woocommerce_billing_fields' , 'custom_override_billing_fields' );
+add_filter( 'woocommerce_shipping_fields' , 'custom_override_shipping_fields' );
+ 
+function custom_override_checkout_fields( $fields ) {
+  unset($fields['billing']['billing_state']);
+  unset($fields['billing']['billing_country']);
+  unset($fields['billing']['billing_company']);
+  unset($fields['billing']['billing_address_1']);
+  unset($fields['billing']['billing_address_2']);
+  unset($fields['billing']['billing_postcode']);
+  unset($fields['billing']['billing_city']);
+  unset($fields['shipping']['shipping_state']);
+  unset($fields['shipping']['shipping_country']);
+  unset($fields['shipping']['shipping_company']);
+  unset($fields['shipping']['shipping_address_1']);
+  unset($fields['shipping']['shipping_address_2']);
+  unset($fields['shipping']['shipping_postcode']);
+  unset($fields['shipping']['shipping_city']);
+  return $fields;
+}
+function custom_override_billing_fields( $fields ) {
+  unset($fields['billing_state']);
+  unset($fields['billing_country']);
+  unset($fields['billing_company']);
+  unset($fields['billing_address_1']);
+  unset($fields['billing_address_2']);
+  unset($fields['billing_postcode']);
+  unset($fields['billing_city']);
+  return $fields;
+}
+function custom_override_shipping_fields( $fields ) {
+  unset($fields['shipping_state']);
+  unset($fields['shipping_country']);
+  unset($fields['shipping_company']);
+  unset($fields['shipping_address_1']);
+  unset($fields['shipping_address_2']);
+  unset($fields['shipping_postcode']);
+  unset($fields['shipping_city']);
+  return $fields;
+}
+/* End - Remove Woocommerce User Fields */

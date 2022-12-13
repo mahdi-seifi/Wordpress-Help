@@ -1,0 +1,1 @@
+<img style="width: 100%;" src="<?php bloginfo('template_url');?>/images/general/404.jpg" />

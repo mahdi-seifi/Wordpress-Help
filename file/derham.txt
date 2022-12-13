@@ -1,0 +1,13 @@
+      <?php
+                           $a = $product->get_meta( 'custom_text_field_title' );
+                           $b = (int)ot_get_option('derham');
+                           $c = get_post_meta( get_the_ID(), '_sale_price', true);
+                           $addition = $a * $b;
+                           $sum = $addition + $c;
+                           echo $sum;
+                        
+
+
+
+
+                           ?>

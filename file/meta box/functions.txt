@@ -1,0 +1,50 @@
+<?php
+// Register Custom Taxonomy
+function actors_taxonomy() {
+
+	$labels = array(
+		'name'                       => __( 'بازیگران', 'text_domain' ),
+		'singular_name'              => __( 'بازیگر', 'text_domain' ),
+		'menu_name'                  => __( 'بازیگران', 'text_domain' ),
+		'all_items'                  => __( 'All Items', 'text_domain' ),
+		'parent_item'                => __( 'Parent Item', 'text_domain' ),
+		'parent_item_colon'          => __( 'Parent Item:', 'text_domain' ),
+		'new_item_name'              => __( 'New Item Name', 'text_domain' ),
+		'add_new_item'               => __( 'Add New Item', 'text_domain' ),
+		'edit_item'                  => __( 'Edit Item', 'text_domain' ),
+		'update_item'                => __( 'Update Item', 'text_domain' ),
+		'separate_items_with_commas' => __( 'آیتم ها را با ویرگول لاتین (,) جدا کنید', 'text_domain' ),
+		'search_items'               => __( 'جستوجوی آیتم ها', 'text_domain' ),
+		'add_or_remove_items'        => __( 'Add or remove items', 'text_domain' ),
+		'choose_from_most_used'      => __( 'انتخاب از آیتم های بیشتر استفاده شده', 'text_domain' ),
+		'not_found'                  => __( 'Not Found', 'text_domain' ),
+	);
+	$rewrite = array(
+		'slug'                       => 'actor',
+		'with_front'                 => true,
+		'hierarchical'               => false,
+	);
+	$capabilities = array(
+		'manage_terms'               => 'manage_categories',
+		'edit_terms'                 => 'manage_categories',
+		'delete_terms'               => 'manage_categories',
+		'assign_terms'               => 'edit_posts',
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => false,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+		'query_var'                  => '',
+		'rewrite'                    => $rewrite,
+		'capabilities'               => $capabilities,
+		'update_count_callback'      => 'Update_Count_Callback',
+		);
+	register_taxonomy( 'actors', array( 'post' ), $args );
+
+}
+add_action( 'init', 'actors_taxonomy', 0 );
+?>

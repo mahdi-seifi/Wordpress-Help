@@ -1,0 +1,5 @@
+
+		<form method="get" action="<?php bloginfo('url'); ?>">
+		<input type="text" name="s" id="s" placeholder=“جستجو ‫…‬” />
+		<input type="submit" name="btnSubmit"  value=""/>
+		</form>

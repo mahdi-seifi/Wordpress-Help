@@ -1,0 +1,1 @@
+<?php echo ot_get_option( 'logo' ); ?>

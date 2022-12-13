@@ -1,0 +1,27 @@
+<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
+<?php the_permalink() ?>
+<?php the_title(); ?>
+ <?php the_category(', ') ?>
+<?php if(function_exists('the_views')) { the_views(); } ?>
+<?php the_content(__('')); ?>
+<?php the_author(', ') ?>
+ <?php the_time('j F Y'); ?>
+<?php the_tags(); ?>
+<?php comments_popup_link('بدون نظر', 'يك نظر', '% نظر'); ?>
+<?php the_content_rss('', TRUE, '', 60); ?>
+<?php bloginfo('template_url');?>/
+
+<?php endwhile; else: ?><?php endif; ?>
+
+<?php wp_list_authors('optioncount=1'); ?> تعداد پست های هر نویسنده
+
+<a title="افزودن به سبد خرید " href="<?php bloginfo('url'); ?>/?add-to-cart=<?php echo get_the_ID(); ?>">افزودن به سبد خرید</a>
+
+
+نمایش دسته بندی محصولات در سینگل ووکامرس
+<?php global $post,$product; $cat_count = sizeof(get_the_terms($post->ID,'product_cat'));
+echo $product->get_categories(',','<span>'. _n('','', $cat_count,'woocommerce' ).'','.</span>'); ?>
+
+
+برچسب محصول : <?php echo $product->get_tags( ', ', '<span class="tagged_as">' . _n( '', '', $tag_count, 'woocommerce' ) . ' ', '.</span>' ); ?>

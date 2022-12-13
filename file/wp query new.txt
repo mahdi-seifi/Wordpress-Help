@@ -1,0 +1,32 @@
+ <?php $args     = array(
+            'post_type'      => array(' posttypename '), /* پست تایپ دلخواه */
+            'post_status'    => 'publish',
+            'posts_per_page' => 3, /* تعداد پست قابل نمایش */
+            'order'          => 'DESC',
+            'orderby'        => 'ID',
+            'tax_query'      => array(
+            array(
+            'taxonomy' => 'category', /* تکسونومی پست تایپ */
+            'field'    => ' ', /* اگر میخواید از نامک دسته برای نمایش استفاده کنید مقدار رو به slug تغییر بدین */
+            'terms'    => array(' '), /* آی دی یا نامک دسته */
+            ),
+            ),
+            'paged'          => ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1,
+            );
+            $loop = new WP_Query( $args );
+            if ( $loop->have_posts() ) { ?>
+            <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+
+
+
+
+
+
+
+
+<?php endwhile; ?>
+            <?php wp_reset_query(); ?>
+            <?php } else {
+            echo "<div class='alert alert-warning'>با عرض پوزش مطلبی جهت نمایش یافت نشد.</div>";
+            } ?>
+

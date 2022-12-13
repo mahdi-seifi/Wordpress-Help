@@ -1,0 +1,28 @@
+/* text */
+<?php  the_terms( get_the_ID(), 'actors' ); ?>
+
+
+/* list */
+<?php if( get_the_term_list( get_the_id(), 'actors', __("") ) ): ?>		
+		<div class="row rowha">
+			<header class=" row-header">
+				<p>بازیگران</p>
+			</header>
+			<div class="col-md-12 actors tax_actors">	  
+				<?php $terms = get_the_terms( get_the_id(), 'actors' ); ?>	
+				<ul>
+					<?php foreach($terms as $term) { ?>
+					<?php $image = get_field('tax_img',$term); $size = 'taxonomy_40px'; $thumb = $image['sizes'][ $size ];  ?>
+						<li>
+							<a href="<?php echo get_term_link( $term->term_id ); ?>" title="<?php  echo $term->name; ?>">
+							<?php if($thumb): ?>
+							<img src="<?php  echo $thumb; ?>"/>
+							<?php else: ?>
+							<img height="40"/>
+							<?php endif; ?><?php  echo $term->name; ?></a>
+						</li>
+					<?php } ?>
+				</ul> 
+			</div>
+		</div>
+<?php endif; ?>	
